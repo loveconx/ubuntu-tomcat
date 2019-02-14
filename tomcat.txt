@@ -1,0 +1,25 @@
+#!/bin/bash
+
+export CATALINA_HOME="/usr/local/apache-tomcat-7.0.92"
+
+case "$1" in
+start)
+        echo -n "Tomcat start :"
+        $CATALINA_HOME/bin/catalina.sh start
+        echo
+        ;;
+stop)
+        echo -n "Tomcat stop :"
+        $CATALINA_HOME/bin/catalina.sh stop
+        echo
+        ;;
+restart)
+        $0 stop
+        sleep 5
+        $0 start
+        ;;
+        *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+exit 0
